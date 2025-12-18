@@ -496,7 +496,7 @@ function generateDishShape (direction=0, section=0, topBoundry) = let(RIGHT = 0,
     
     bezpath_curve(bezierInput(bezierNodeArray[direction][LEFT][section], bezierControlArray[direction][LEFT][section]), splinesteps = bezsteps, N = 3),
     
-  [[pointlist_bounds(bezierNodeArray[direction][LEFT][section])[1][0], topBoundry]],  //edge point
+  [[pointlist_bounds(bezierNodeArray[direction][LEFT][section])[1][0], topBoundry]]  //edge point
   );  //sanity check required
 
   nullJump = [[1,0,0,0],[0,1,0,0],[0,0,1,0],[0,0,0,1]]; //vec of no translation for transform shift
