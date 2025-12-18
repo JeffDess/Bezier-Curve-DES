@@ -17,7 +17,7 @@
     };
   };
 
-  outputs = { nixpkgs, bosl2, scad-utils, nopscadlib }: {
+  outputs = { self, nixpkgs, bosl2, scad-utils, nopscadlib }: {
     devShells.x86_64-linux.default = let
       pkgs = nixpkgs.legacyPackages.x86_64-linux;
       libDir = "$HOME/.local/share/OpenSCAD/libraries";
@@ -28,9 +28,9 @@
         mkdir -p ${libDir}
 
         echo "Setting up OpenSCAD libraries..."
-        ln -sf ${bosl2} ${libDir}/BOSL2
-        ln -sf ${scad-utils} ${libDir}/scad-utils
-        ln -sf ${nopscadlib}/utils/sweep.scad ${libDir}/sweep.scad
+        [ ! -e ${libDir}/BOSL2 ] && ln -s ${bosl2} ${libDir}/BOSL2
+        [ ! -e ${libDir}/scad-utils ] && ln -s ${scad-utils} ${libDir}/scad-utils
+        [ ! -e ${libDir}/sweep.scad ] && ln -s ${nopscadlib}/utils/sweep.scad ${libDir}/sweep.scad
 
         echo "OpenSCAD libraries ready at ${libDir}"
       '';
