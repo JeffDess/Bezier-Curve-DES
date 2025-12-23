@@ -22,7 +22,7 @@
       pkgs = nixpkgs.legacyPackages.x86_64-linux;
       libDir = "$HOME/.local/share/OpenSCAD/libraries";
     in pkgs.mkShell {
-      packages = with pkgs; [ openscad ];
+      packages = with pkgs; [ openscad-unstable ];
 
       shellHook = ''
         mkdir -p ${libDir}
